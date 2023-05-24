@@ -21,20 +21,23 @@ class ProductController extends Controller
 
    public function store(Request $request){
 
+      // dd($request->all());
+
       $request->validate([
                'title'                 => ['required', 'string', 'max:255'],
                'minimum_bidding_price' => ['nullable','numeric', 'integer', 'min:1'],
-               'deadline'              => ['required','string', 'date_format:d-m-Y', 'after:'.now()],
+               'deadline'              => ['required','string', 'date_format:d/m/Y H:i', 'after:'.now()],
          ], 
          [
-               'deadline.after' => 'The deadline must be greater than '.now()->format('d-m-Y')
+            'deadline.date_format'    => 'Incorrect date format. The date format must be in the foramt d/m/Y H:i.',
+            'deadline.after'          => 'The deadline must be greater than '.now()->format('d/m/Y H:i') . '.',
          ]
       );
 
       $product                            = new Product();
       $product->title                     = $request->title;
       $product->minimum_bidding_price     = $request->minimum_bidding_price ?? 0;
-      $product->deadline                  = Carbon::createFromFormat("d-m-Y", $request->deadline)->endOfDay();
+      $product->deadline                  = Carbon::createFromFormat("d/m/Y H:i", $request->deadline);
       $product->save();
 
       return redirect()->route('admin.products.index')

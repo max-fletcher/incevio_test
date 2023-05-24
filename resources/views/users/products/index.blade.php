@@ -16,7 +16,7 @@
                      <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>
                         <h6 class="card-text">Minimum Bid: ${{ $product->minimum_bidding_price ?? 0 }}</h6>
-                        <p>Deadline: {{ \Carbon\Carbon::parse($product->deadline)->format('d-m-Y') }}</p>
+                        <p>Deadline: {{ \Carbon\Carbon::parse($product->deadline)->format('d-m-Y h:i A') }}</p>
                         <a class="btn btn-primary"
                            href="{{ route('users.products.show', ['product_id' => $product->id]) }}">
                            Show Product

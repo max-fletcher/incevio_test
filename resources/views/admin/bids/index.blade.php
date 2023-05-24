@@ -21,7 +21,7 @@
                      <td>{{ $loop->iteration }}</td>
                      <td>{{ $bid->bidder->usercode }}</td>
                      <td>${{ $bid->bidding_price }}</td>
-                     <td>{{ \Carbon\Carbon::parse($bid->updated_at)->format('d-m-Y') }}</td>
+                     <td>{{ \Carbon\Carbon::parse($bid->updated_at)->format('d-m-Y h:i A') }}</td>
                   </tr>
                @empty
                   <td class="text-center" colspan="5">

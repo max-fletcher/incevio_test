@@ -30,16 +30,16 @@ class SendEmailsAfterDeadlineCron extends Command
     public function handle()
     {
         $products_with_deadlines_exceeded = Product::where('deadline', '<', now())
-                                            ->where('bid_ended', false)
-                                            ->with([
-                                                    'bids' => function($query1){
-                                                        return $query1->orderBy('bidding_price', 'desc');
-                                                    },
-                                                    'bids.bidder' => function($query2){
-                                                        return $query2->where('verified', true);
-                                                    }
-                                                ])
-                                            ->get();
+                                                    ->where('bid_ended', false)
+                                                    ->with([
+                                                            'bids' => function($query1){
+                                                                return $query1->orderBy('bidding_price', 'desc');
+                                                            },
+                                                            'bids.bidder' => function($query2){
+                                                                return $query2->where('verified', true);
+                                                            }
+                                                        ])
+                                                    ->get();
 
         foreach($products_with_deadlines_exceeded as $product){
             foreach($product->bids as $key => $bid){

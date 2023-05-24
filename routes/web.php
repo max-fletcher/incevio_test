@@ -51,13 +51,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
-   Route::group(['prefix'=>'bidders', 'middleware'=>['auth']], function(){
+   Route::group(['prefix'=>'bidders'], function(){
       Route::get('/', [App\Http\Controllers\Admin\BidderController::class, 'index'])->name('admin.bidders.index');
 
       Route::post('verify_bidder_ajax', [App\Http\Controllers\Admin\BidderController::class, 'verify_bidder_ajax'])->name('admin.verify_bidder.ajax');
    });
 
-   Route::group(['prefix'=>'products', 'middleware'=>['auth']], function(){
+   Route::group(['prefix'=>'products'], function(){
       Route::get('/', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.products.index');
       Route::get('/create', [App\Http\Controllers\Admin\ProductController::class, 'create'])->name('admin.products.create');
       Route::post('/store', [App\Http\Controllers\Admin\ProductController::class, 'store'])->name('admin.products.store');

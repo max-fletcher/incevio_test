@@ -18,7 +18,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, reiciendis in. Suscipit odio beatae unde enim 
                   odit aperiam repellendus sunt.
                </p>
-               <h5>Deadline: {{ \Carbon\Carbon::parse($product->deadline)->format('d-m-Y') }}</h5>
+               <h5>Deadline: {{ \Carbon\Carbon::parse($product->deadline)->format('d-m-Y h:i A') }}</h5>
                @if(now() > $product->deadline)
                   <h4 class="mt-3">Deadline for this product has been reached !!</h4>
 
@@ -43,7 +43,7 @@
                </div>
             </div>
             <div class="card-footer text-muted">
-               Added: {{\Carbon\Carbon::parse($product->created_at)->diffForHumans() }}
+               Added: {{ \Carbon\Carbon::parse($product->created_at)->diffForHumans() }}
             </div>
          </div>
 
@@ -64,7 +64,7 @@
                      <td>
                         ${{ $bid->bidding_price }}
                      </td>
-                     <td>{{ \Carbon\Carbon::parse($bid->updated_at)->format('d-m-Y') }}</td>
+                     <td>{{ \Carbon\Carbon::parse($bid->updated_at)->format('d-m-Y h:i A') }}</td>
                   </tr>
                @empty
                   <td class="text-center" colspan="5">

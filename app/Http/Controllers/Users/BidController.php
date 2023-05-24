@@ -18,7 +18,7 @@ class BidController extends Controller
 
       $request->validate([
                'bid_email'     => ['required', 'string', 'email:rfc,dns'],
-               'bidding_price' => ['required', 'numeric', 'integer', 'min:'.$product->minimum_bidding_price, 'max:999'],
+               'bidding_price' => ['required', 'numeric', 'integer', 'min:'.$product->minimum_bidding_price],
          ], 
          [
                'bidding_price.min' => 'Minimum bidding price is '.$product->minimum_bidding_price.'. Please enter a value greater than that.',

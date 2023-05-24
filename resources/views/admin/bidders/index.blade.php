@@ -22,7 +22,7 @@
                      <td>{{ $loop->iteration }}</td>
                      <td>{{ $bidder->email }}</td>
                      <td>{{ $bidder->usercode }}</td>
-                     <td>{{ \Carbon\Carbon::parse($bidder->created_at)->format('d-m-Y') }}</td>
+                     <td>{{ \Carbon\Carbon::parse($bidder->created_at)->format('d-m-Y h:i A') }}</td>
                      <td>
                         @if($bidder->verified)
                            <button class="btn btn-warning verify_bidder" id="verify_bidder_{{ $bidder->id }}" data-bidder-id="{{ $bidder->id }}">

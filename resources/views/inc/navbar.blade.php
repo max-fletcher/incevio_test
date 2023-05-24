@@ -17,12 +17,14 @@
          <ul class="navbar-nav ms-auto">
                <!-- Authentication Links -->
                @guest
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ route('users.products.index') }}">Products</a>
+               </li>
                   @if (Route::has('login'))
                      <li class="nav-item">
                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                      </li>
                   @endif
-
                   @if (Route::has('register'))
                      <li class="nav-item">
                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

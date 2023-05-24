@@ -127,8 +127,8 @@
                      <td>{{ $loop->iteration }}</td>
                      <td>{{ $product->title }}</td>
                      <td>${{ $product->minimum_bidding_price ?? 0 }}</td>
-                     <td>{{  \Carbon\Carbon::parse($product->created_at)->format('d-m-Y') }}</td>
-                     <td>{{  \Carbon\Carbon::parse($product->deadline)->format('d-m-Y') }}</td>
+                     <td>{{  \Carbon\Carbon::parse($product->created_at)->format('d-m-Y h:i A') }}</td>
+                     <td>{{  \Carbon\Carbon::parse($product->deadline)->format('d-m-Y h:i A') }}</td>
                      <td>
                         <a class="btn btn-primary"
                            href="{{ route('admin.bids.index', ['product_id' => $product->id]) }}">
